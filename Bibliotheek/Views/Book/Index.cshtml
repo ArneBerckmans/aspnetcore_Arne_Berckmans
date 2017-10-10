@@ -1,0 +1,29 @@
+﻿@model BookListViewModel
+
+@{
+    ViewData["Title"] = "Overzicht boeken";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Created At</td>
+                <td>ISBN</td>
+            </tr>
+            </thead>
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td><a asp-controller="Book" asp-action="Detail" asp-route-id="@book.Id">@book.Title</a></td>
+                    <td>@book.Author</td>
+                    <td>@book.CreationDate.ToLongDateString()</td>
+                    <td>@book.ISBN</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
