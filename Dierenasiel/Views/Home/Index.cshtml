@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<OverviewAnimalViewModel>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Type</th>
+                <th>Baasje?</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var animal in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@animal.Id">@animal.Name</a>
+                    </td>
+                    <td>@animal.AnimalKind</td>
+                    <td>@(animal.HasBeenPlaced ? "Ja" : "Nee")</td>
+                    <td>
+                        @animal.ExtraInformation
+                    </td>
+                    <!-- TODO 07 Add extra column with "mean" or "drooler" or "empty" -->
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <a asp-action="Create" asp-route-type="Cat">Create cat</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <a asp-action="Create" asp-route-type="Dog">Create dog</a>
+    </div>
+</div>

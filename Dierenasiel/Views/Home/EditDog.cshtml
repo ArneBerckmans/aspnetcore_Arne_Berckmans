@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model EditDogViewModel
+
+<div class="row">
+    <div class="col-sm-12">
+        <form method="post" asp-action="PersistDog">
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="Drools">Kwijlt?</label>
+                <input type="checkbox" asp-for="Drools"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name">Naam</label>
+                <input type="text" asp-for="Name"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner">Eigenaar</label>
+                <select asp-for="Owner" asp-items="Model.PotentialOwners"></select>
+            </div>
+            <input type="submit"/>
+        </form>
+    </div>
+</div>
